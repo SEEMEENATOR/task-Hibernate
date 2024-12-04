@@ -1,19 +1,39 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.4.0'
+    implementation 'org.hibernate:hibernate-core:6.4.1.Final'
+
+    implementation 'org.postgresql:postgresql:42.7.2'
+
+    implementation 'org.projectlombok:lombok:1.18.30'
+    implementation 'org.projectlombok:lombok:1.18.26'
+    // https://mvnrepository.com/artifact/org.hibernate.search/hibernate-search-mapper-orm
+    implementation 'org.hibernate.search:hibernate-search-mapper-orm:7.2.2.Final'
+    implementation 'org.ehcache:ehcache:3.10.0'
+// https://mvnrepository.com/artifact/org.hibernate/hibernate-jcache
+    implementation 'org.hibernate:hibernate-jcache:6.4.1.Final'
+    implementation 'org.hibernate.search:hibernate-search-backend-lucene:7.2.2.Final'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
 }
 
-test {
-    useJUnitPlatform()
+application {
+    mainClassName = 'org.example.Main'
 }
